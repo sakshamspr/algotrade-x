@@ -16,9 +16,6 @@ const modeConfig: Array<{ key: Mode; label: string; route: string }> = [
 
 const navLinks = [
   { label: "Dashboard", to: "/choice" },
-  { label: "Low Risk", to: "/low-risk" },
-  { label: "Investing", to: "/moderate-risk" },
-  { label: "Trading", to: "/high-risk" },
   { label: "Our Team", to: "/team" },
 ];
 
@@ -62,10 +59,10 @@ export function Navbar() {
         <div className="flex flex-nowrap items-center gap-2 rounded-full border border-border/40 bg-muted/80 p-1 overflow-x-auto scrollbar-hide">
           {modeConfig.map((item) => {
             const isActive = mode === item.key || location.pathname === item.route;
-            const accentClass = 
+            const accentClass =
               item.key === "low" ? "bg-emerald-500 text-white" :
-              item.key === "moderate" ? "bg-amber-500 text-white" :
-              "bg-rose-500 text-white";
+                item.key === "moderate" ? "bg-amber-500 text-white" :
+                  "bg-rose-500 text-white";
 
             return (
               <button
