@@ -31,3 +31,29 @@ export function DialogContent({
     </DialogPortal>
   );
 }
+export function DialogHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("flex flex-col space-y-1.5 text-center sm:text-left", className)} {...props} />;
+}
+
+export function DialogFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)} {...props} />;
+}
+
+export function DialogTitle({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof DialogPrimitive.Title>) {
+  return (
+    <DialogPrimitive.Title
+      className={cn("text-lg font-semibold leading-none tracking-tight", className)}
+      {...props}
+    />
+  );
+}
+
+export function DialogDescription({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof DialogPrimitive.Description>) {
+  return <DialogPrimitive.Description className={cn("text-sm text-muted-foreground", className)} {...props} />;
+}

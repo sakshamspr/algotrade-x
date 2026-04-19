@@ -36,11 +36,13 @@ export function Navbar() {
   return (
     <Card className="sticky top-4 z-40 mb-5 rounded-[28px] border-white/50 bg-background/70 p-3 shadow-panel backdrop-blur-xl">
       <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
-        <button className="flex items-center gap-3 text-left" onClick={() => navigate("/")}>
-          <LogoMark />
+        <button className="flex items-center gap-3 text-left group" onClick={() => navigate("/")}>
+          <div className="relative h-12 w-12 overflow-hidden rounded-xl border border-border/50 bg-white/50 p-1 group-hover:scale-110 transition-transform duration-300">
+            <img src="/logo.png" alt="Algotrade X Logo" className="h-full w-full object-contain" />
+          </div>
           <div>
-            <p className="text-sm text-muted-foreground">Fintech Intelligence</p>
-            <h1 className="text-lg font-semibold tracking-tight">Algotrade X</h1>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-70">Fintech Intelligence</p>
+            <h1 className="text-xl font-bold tracking-tight">Algotrade X</h1>
           </div>
         </button>
 
@@ -61,21 +63,29 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="flex flex-wrap items-center gap-2 rounded-full bg-muted/80 p-1">
-          {modeConfig.map((item) => (
-            <button
-              key={item.key}
-              onClick={() => handleMode(item.key, item.route)}
-              className={cn(
-                "rounded-full px-4 py-2 text-sm font-medium transition",
-                mode === item.key || location.pathname === item.route
-                  ? "bg-white text-slate-950 shadow-sm dark:bg-slate-900 dark:text-white"
-                  : "text-muted-foreground hover:text-foreground",
-              )}
-            >
-              {item.label}
-            </button>
-          ))}
+        <div className="flex flex-wrap items-center gap-2 rounded-full border border-border/40 bg-muted/80 p-1">
+          {modeConfig.map((item) => {
+            const isActive = mode === item.key || location.pathname === item.route;
+            const accentClass = 
+              item.key === "low" ? "bg-emerald-500 text-white" :
+              item.key === "moderate" ? "bg-amber-500 text-white" :
+              "bg-rose-500 text-white";
+
+            return (
+              <button
+                key={item.key}
+                onClick={() => handleMode(item.key, item.route)}
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-medium transition-all duration-300",
+                  isActive
+                    ? `${accentClass} shadow-[0_0_12px_rgba(0,0,0,0.1)]`
+                    : "text-muted-foreground hover:bg-background/50 hover:text-foreground",
+                )}
+              >
+                {item.label}
+              </button>
+            );
+          })}
         </div>
 
         <div className="flex items-center gap-2">

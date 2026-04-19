@@ -20,8 +20,10 @@ export function Footer() {
       <Card className="overflow-hidden rounded-[32px] border-border/70 bg-gradient-to-br from-slate-950 to-slate-900 p-8 text-white">
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.8fr_0.9fr]">
           <div>
-            <div className="flex items-center gap-3">
-              <LogoMark />
+            <div className="flex items-center gap-4">
+              <div className="h-12 w-12 overflow-hidden rounded-xl border border-white/10 bg-white/5 p-1">
+                <img src="/logo.png" alt="Logo" className="h-full w-full object-contain" />
+              </div>
               <div>
                 <p className="text-sm text-slate-400">Modern investing workspace</p>
                 <h3 className="text-xl font-semibold">Algotrade X</h3>
