@@ -36,13 +36,9 @@ export function Navbar() {
   return (
     <Card className="sticky top-4 z-40 mb-5 rounded-[28px] border-white/50 bg-background/70 p-3 shadow-panel backdrop-blur-xl">
       <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
-        <button className="flex items-center gap-3 text-left group" onClick={() => navigate("/")}>
-          <div className="relative h-12 w-12 overflow-hidden rounded-xl border border-border/50 bg-white/50 p-1 group-hover:scale-110 transition-transform duration-300">
-            <img src="/logo.png" alt="Algotrade X Logo" className="h-full w-full object-contain" />
-          </div>
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-70">Fintech Intelligence</p>
-            <h1 className="text-xl font-bold tracking-tight">Algotrade X</h1>
+        <button className="flex items-center group" onClick={() => navigate("/")}>
+          <div className="relative h-16 w-40 overflow-hidden group-hover:scale-105 transition-transform duration-300">
+            <img src="/logo.png" alt="Algotrade X Logo" className="h-full w-full object-contain object-left" />
           </div>
         </button>
 
@@ -63,7 +59,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="flex flex-wrap items-center gap-2 rounded-full border border-border/40 bg-muted/80 p-1">
+        <div className="flex flex-nowrap items-center gap-2 rounded-full border border-border/40 bg-muted/80 p-1 overflow-x-auto scrollbar-hide">
           {modeConfig.map((item) => {
             const isActive = mode === item.key || location.pathname === item.route;
             const accentClass = 
